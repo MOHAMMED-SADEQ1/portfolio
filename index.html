@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohammed Sadiq - Senior Full-Stack & Cloud Solutions Architect">
+    <title> محمد صادق | Mohammed Sadeq</title>
+
+    <!-- ==================== SEO: Open Graph & Twitter Cards ==================== -->
+    <!-- ⚠️ عند النشر: استبدل https://YOUR-DOMAIN.com برابط موقعك الفعلي وصورة المعاينة -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mohammed Sadeq | Portfolio">
+    <meta property="og:title" content="محمد صادق | Mohammed Sadeq — Senior Full-Stack & Cloud Solutions Architect">
+    <meta property="og:description" content="I transform complex ideas into scalable cloud systems and integrated mobile applications. Laravel, Next.js, NestJS, Flutter, and React expert.">
+    <meta property="og:url" content="https://YOUR-DOMAIN.com/">
+    <meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mohammed Sadeq — Senior Full-Stack & Cloud Solutions Architect">
+    <meta property="og:locale" content="ar_SA">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="محمد صادق | Mohammed Sadeq — Senior Full-Stack & Cloud Solutions Architect">
+    <meta name="twitter:description" content="Senior Full-Stack & Cloud Solutions Architect — Laravel, Next.js, NestJS, Flutter, React.">
+    <meta name="twitter:image" content="https://YOUR-DOMAIN.com/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Cairo', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        neon: {
+                            cyan: '#64ffda',
+                            blue: '#00d4ff',
+                            purple: '#a855f7',
+                            green: '#22d3ee',
+                            pink: '#f472b6',
+                        },
+                        dark: {
+                            base: '#0a192f',
+                            light: '#112240',
+                            lighter: '#1d3461',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 20s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #64ffda, 0 0 10px #64ffda, 0 0 15px #64ffda' },
+                            '100%': { boxShadow: '0 0 10px #a855f7, 0 0 20px #a855f7, 0 0 30px #a855f7' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- ==================== SEO: JSON-LD Structured Data ==================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mohammed Sadeq Abdo Ahmed",
+      "alternateName": "محمد صادق",
+      "url": "https://YOUR-DOMAIN.com/",
+      "image": "https://YOUR-DOMAIN.com/my_image.png",
+      "jobTitle": "Senior Full-Stack Developer & Cloud Solutions Architect",
+      "email": "mailto:mohammadsadekaljafri@gmail.com",
+      "telephone": "+966537498756",
+      "address": { "@type": "PostalAddress", "addressCountry": "SA" },
+      "knowsAbout": ["Laravel", "PHP", "Next.js", "React", "NestJS", "Node.js", "Flutter", "Android", "TypeScript", "PostgreSQL", "MySQL", "Redis", "Docker", "AWS", "Firebase"],
+      "sameAs": [
+        "https://github.com/MOHAMMED-SADEQ1",
+        "https://wa.me/966537498756"
+      ]
+    }
+    </script>
+
+</head>
+<body class="antialiased lang-transition">
+
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
+    <div class="cursor-ring hidden md:block" id="cursor-ring"></div>
+
+    <!-- Dynamic Particle Background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ==================== HEADER / NAVIGATION ==================== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#hero" class="text-2xl font-bold font-mono">
+                    <span class="text-neon-cyan">&lt;</span>
+                    <span class="gradient-text">MS</span>
+                    <span class="text-neon-cyan">/&gt;</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex items-center gap-8">
+                    <li><a href="#hero" class="nav-link text-sm font-medium hover:text-neon-cyan transition-colors" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="#skills" class="nav-link text-sm font-medium hover:text-neon-cyan transition-colors" data-en="Skills" data-ar="المهارات">Skills</a></li>
+                    <li><a href="#projects" class="nav-link text-sm font-medium hover:text-neon-cyan transition-colors" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+                    <li><a href="#contact" class="nav-link text-sm font-medium hover:text-neon-cyan transition-colors" data-en="Contact" data-ar="تواصل">Contact</a></li>
+                </ul>
+
+                <!-- Desktop Actions -->
+                <div class="hidden md:flex items-center gap-4">
+                    <!-- Language Toggle -->
+                    <button id="lang-toggle" class="lang-toggle glass px-4 py-2 rounded-full text-sm font-medium hover:border-neon-cyan transition-all" aria-label="Toggle Language">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-globe"></i>
+                            <span id="lang-label">العربية</span>
+                        </span>
+                    </button>
+
+                    <!-- Profile Image Trigger -->
+                    <button id="profile-trigger" class="w-10 h-10 rounded-full overflow-hidden border-2 border-neon-cyan/30 hover:border-neon-cyan transition-all hover:scale-110 hover:shadow-lg hover:shadow-neon-cyan/20" aria-label="View Profile Photo">
+                        <img src="my_image.png" alt="Profile" class="w-full h-full object-cover">
+                    </button>
+
+                    <!-- CTA Button -->
+                    <a href="#contact" class="btn-primary px-6 py-2.5 rounded-full font-medium text-sm magnetic-btn">
+                        <span data-en="Let's Talk" data-ar="لنتحدث">Let's Talk</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <div class="md:hidden flex items-center gap-3 ms-4">
+                    <!-- Profile Image Trigger (Mobile) -->
+                    <button id="mobile-profile-trigger" class="w-9 h-9 rounded-full overflow-hidden border-2 border-neon-cyan/30 hover:border-neon-cyan transition-all" aria-label="View Profile Photo">
+                        <img src="my_image.png" alt="Profile" class="w-full h-full object-cover">
+                    </button>
+
+                    <button id="menu-toggle" class="text-2xl focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 glass-strong z-50 p-8">
+            <button id="menu-close" class="absolute top-6 right-6 text-2xl focus:outline-none" aria-label="Close Menu">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <!-- Mobile Language Toggle -->
+            <div class="mt-16 mb-8">
+                <button id="mobile-lang-toggle" class="lang-toggle glass px-4 py-2 rounded-full text-sm font-medium hover:border-neon-cyan transition-all" aria-label="Toggle Language">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-globe"></i>
+                        <span class="mobile-lang-label">العربية</span>
+                    </span>
+                </button>
+            </div>
+            
+            <ul class="flex flex-col gap-8">
+                <li><a href="#hero" class="mobile-link text-lg font-medium hover:text-neon-cyan transition-colors" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="#skills" class="mobile-link text-lg font-medium hover:text-neon-cyan transition-colors" data-en="Skills" data-ar="المهارات">Skills</a></li>
+                <li><a href="#projects" class="mobile-link text-lg font-medium hover:text-neon-cyan transition-colors" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+                <li><a href="#contact" class="mobile-link text-lg font-medium hover:text-neon-cyan transition-colors" data-en="Contact" data-ar="تواصل">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ==================== PROFILE IMAGE MODAL ==================== -->
+    <div id="profile-modal" class="fixed inset-0 z-[10000] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modal-backdrop"></div>
+        
+        <!-- Modal Content -->
+        <div class="absolute inset-0 flex items-center justify-center p-6">
+            <div class="relative max-w-lg w-full">
+                <!-- Close Button -->
+                <button id="modal-close" class="absolute -top-12 right-0 text-white text-2xl hover:text-neon-cyan transition-colors" aria-label="Close Modal">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <!-- Profile Image Container -->
+                <div class="w-64 h-64 md:w-80 md:h-80 mx-auto relative">
+                    <div class="hexagon-outer profile-modal-hex">
+                        <div class="hexagon-inner">
+                            <img src="my_image.png" alt="Mohammed Sadeq" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div class="hexagon-glow profile-modal-glow"></div>
+                </div>
+                
+                <!-- Name -->
+                <div class="text-center mt-8">
+                    <h3 class="text-2xl md:text-3xl font-bold gradient-text">MOHAMMED SADEQ</h3>
+                    <p class="text-gray-400 mt-2 text-sm" data-en="Senior Full-Stack Developer" data-ar="مطور Full-Stack محترف">Senior Full-Stack Developer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <!-- Decorative Gradient Orbs -->
+        <div class="gradient-orb w-96 h-96 bg-neon-cyan top-20 -left-20 animate-float"></div>
+        <div class="gradient-orb w-[500px] h-[500px] bg-neon-purple bottom-20 -right-32 animate-float-slow" style="animation-delay: 2s;"></div>
+        <div class="gradient-orb w-64 h-64 bg-neon-blue top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse-slow"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto text-center">
+                <!-- Greeting -->
+                <p class="text-neon-cyan font-mono text-sm md:text-base mb-6" data-aos="fade-down" data-aos-delay="200" data-en="Hello World, I'm" data-ar="مرحباً بكم، أنا">Hello World, I'm</p>
+                
+                <!-- Name with Glitch Effect -->
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-8 glitch-hover" data-aos="fade-up" data-aos-delay="400">
+                    <span class="gradient-text" data-en="MOHAMMED SADEQ" data-ar="محمد صادق">MOHAMMED SADEQ</span>
+                </h1>
+
+                <!-- Typing Effect Container -->
+                <div class="h-16 md:h-20 flex items-center justify-center mb-8" data-aos="fade-up" data-aos-delay="600">
+                    <span id="typing-text" class="text-xl md:text-3xl lg:text-4xl font-light text-gray-300"></span>
+                    <span class="typing-cursor"></span>
+                </div>
+
+                <!-- Description -->
+                <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" data-aos="fade-up" data-aos-delay="800" data-en="I transform complex ideas into scalable cloud systems and integrated mobile applications." data-ar="نحول الأفكار المعقدة إلى أنظمة سحابية وتطبيقات موبايل متكاملة وقابلة للتوسع">I transform complex ideas into scalable cloud systems and integrated mobile applications.</p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6" data-aos="fade-up" data-aos-delay="1000">
+                    <a href="#projects" class="btn-primary px-8 py-4 rounded-full font-semibold text-lg w-full sm:w-auto magnetic-btn">
+                        <span class="flex items-center justify-center gap-2">
+                            <span data-en="View My Work" data-ar="شاهد أعمالي">View My Work</span> <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                    <a href="#contact" class="btn-outline px-8 py-4 rounded-full font-semibold text-lg w-full sm:w-auto magnetic-btn">
+                        <span class="flex items-center justify-center gap-2">
+                            <i class="fas fa-envelope"></i> <span data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex items-center justify-center gap-6 mt-12" data-aos="fade-up" data-aos-delay="1200">
+                    <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" class="social-icon text-2xl text-gray-400 hover:text-neon-cyan">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon text-2xl text-gray-400 hover:text-neon-cyan">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://wa.me/966537498756" target="_blank" class="social-icon text-2xl text-gray-400 hover:text-neon-green">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:mohammadsadekaljafri@gmail.com" class="social-icon text-2xl text-gray-400 hover:text-neon-cyan">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce" data-aos="fade-up" data-aos-delay="1400">
+                <a href="#skills" class="text-gray-500 hover:text-neon-cyan transition-colors">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider mx-auto max-w-4xl"></div>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section id="skills" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <p class="text-neon-cyan font-mono text-sm mb-2" data-aos="fade-down" data-en="What I Do" data-ar="ماذا أفعل">What I Do</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">
+                    <span class="gradient-text" data-en="Technical Skills" data-ar="المهارات التقنية">Technical Skills</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="Specialized in building scalable, high-performance applications across the entire stack." data-ar="متخصص في بناء تطبيقات قابلة للتوسع وعالية الأداء عبر كامل الـ Stack.">Specialized in building scalable, high-performance applications across the entire stack.</p>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Backend Skills -->
+                <div class="glass rounded-2xl p-8 neon-glow tilt-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-neon-cyan text-4xl mb-6">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" data-en="Backend Development" data-ar="تطوير الواجهة الخلفية">Backend Development</h3>
+                    <p class="text-gray-400 mb-6 text-sm" data-en="Enterprise-grade APIs and complex business logic" data-ar="واجهات برمجة تطبيقات على مستوى المؤسسات ومنطق أعمال معقد">Enterprise-grade APIs and complex business logic</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Laravel 11/13</span>
+                                <span class="text-neon-cyan text-sm">95%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-blue" style="--skill-level: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">PHP</span>
+                                <span class="text-neon-cyan text-sm">92%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-blue" style="--skill-level: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">NestJS</span>
+                                <span class="text-neon-cyan text-sm">88%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-blue" style="--skill-level: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Node.js</span>
+                                <span class="text-neon-cyan text-sm">90%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-blue" style="--skill-level: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Skills -->
+                <div class="glass rounded-2xl p-8 neon-glow-purple tilt-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-neon-purple text-4xl mb-6">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" data-en="Frontend Development" data-ar="تطوير الواجهة الأمامية">Frontend Development</h3>
+                    <p class="text-gray-400 mb-6 text-sm" data-en="Modern, responsive, and interactive UIs" data-ar="واجهات مستخدم حديثة ومتجاوبة وتفاعلية">Modern, responsive, and interactive UIs</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Next.js</span>
+                                <span class="text-neon-purple text-sm">92%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-purple to-neon-pink" style="--skill-level: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">React.js</span>
+                                <span class="text-neon-purple text-sm">90%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-purple to-neon-pink" style="--skill-level: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">TypeScript</span>
+                                <span class="text-neon-purple text-sm">87%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-purple to-neon-pink" style="--skill-level: 87%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Tailwind CSS</span>
+                                <span class="text-neon-purple text-sm">93%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-purple to-neon-pink" style="--skill-level: 93%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Skills -->
+                <div class="glass rounded-2xl p-8 neon-glow tilt-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-neon-green text-4xl mb-6">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" data-en="Mobile & Cloud" data-ar="الموبايل والسحابة">Mobile & Cloud</h3>
+                    <p class="text-gray-400 mb-6 text-sm" data-en="Cross-platform apps with native performance" data-ar="تطبيقات متعددة المنصات بأداء أصلي">Cross-platform apps with native performance</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Flutter</span>
+                                <span class="text-neon-green text-sm">88%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-green to-neon-cyan" style="--skill-level: 88%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Android</span>
+                                <span class="text-neon-green text-sm">85%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-green to-neon-cyan" style="--skill-level: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium" data-en="Cloud Architecture" data-ar="هندسة السحابة">Cloud Architecture</span>
+                                <span class="text-neon-green text-sm">82%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-green to-neon-cyan" style="--skill-level: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-medium">Firebase</span>
+                                <span class="text-neon-green text-sm">90%</span>
+                            </div>
+                            <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full rounded-full bg-gradient-to-r from-neon-green to-neon-cyan" style="--skill-level: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Additional Tech Stack -->
+            <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="800">
+                <p class="text-gray-500 text-sm mb-6" data-en="Also experienced with" data-ar="خبرة أيضاً في">Also experienced with</p>
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <span class="glass px-5 py-2.5 rounded-full text-sm text-gray-300 hover:text-neon-cyan hover:border-neon-cyan transition-all cursor-default">Docker</span>
+                    <span class="glass px-5 py-2.5 rounded-full text-sm text-gray-300 hover:text-neon-cyan hover:border-neon-cyan transition-all cursor-default">AWS</span>
+                    <span class="glass px-5 py-2.5 rounded-full text-sm text-gray-300 hover:text-neon-cyan hover:border-neon-cyan transition-all cursor-default">Redis</span>
+                    <span class="glass px-5 py-2.5 rounded-full text-sm text-gray-300 hover:text-neon-cyan hover:border-neon-cyan transition-all cursor-default">REST</span>
+                    <span class="glass px-5 py-2.5 rounded-full text-sm text-gray-300 hover:text-neon-cyan hover:border-neon-cyan transition-all cursor-default">CI/CD</span>
+                    <span class="glass px-5 py-2.5 rounded-full text-sm text-gray-300 hover:text-neon-cyan hover:border-neon-cyan transition-all cursor-default">PostgreSQL</span>
+                    <span class="glass px-5 py-2.5 rounded-full text-sm text-gray-300 hover:text-neon-cyan hover:border-neon-cyan transition-all cursor-default">MySQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider mx-auto max-w-4xl"></div>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projects" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <p class="text-neon-cyan font-mono text-sm mb-2" data-aos="fade-down" data-en="Portfolio" data-ar="معرض الأعمال">Portfolio</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">
+                    <span class="gradient-text" data-en="Featured Projects" data-ar="مشاريع مميزة">Featured Projects</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="Complex enterprise systems built with precision, scalability, and modern architecture." data-ar="أنظمة مؤسسية معقدة مبنية بدقة وقابلية للتوسع وهندسة حديثة.">Complex enterprise systems built with precision, scalability, and modern architecture.</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="space-y-12">
+                
+                <!-- Project 1: Cloud Hotel PMS -->
+                <div class="project-card glass rounded-2xl overflow-hidden neon-glow group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Project Visual -->
+                        <div class="relative h-72 lg:h-auto bg-gradient-to-br from-neon-cyan/20 to-neon-purple/20 flex items-center justify-center overflow-hidden">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, rgba(100, 255, 218, 0.3) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.3) 0%, transparent 50%);"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-hotel text-7xl text-neon-cyan mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                <h3 class="text-2xl font-bold text-white">Cloud Hotel PMS</h3>
+                            </div>
+                            
+                            <!-- Hover Overlay -->
+                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-dark-base/95 via-dark-base/70 to-transparent flex items-end p-8">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full">Next.js</span>
+                                    <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full">Laravel</span>
+                                    <span class="px-3 py-1 bg-neon-green/20 text-neon-green text-xs rounded-full" data-en="Cloud" data-ar="سحابي">Cloud</span>
+                                    <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs rounded-full">REST API</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Info -->
+                        <div class="p-8 lg:p-12 flex flex-col justify-center">
+                            <span class="text-neon-cyan font-mono text-sm mb-2" data-en="Featured Project" data-ar="مشروع مميز">Featured Project</span>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-neon-cyan transition-colors" data-en="Cloud Hotel PMS" data-ar="نظام حجوزات الفنادق السحابي">Cloud Hotel PMS</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-en="A comprehensive cloud-based hotel property management system with real-time booking synchronization, revenue analytics, and multi-property support. Handles complex reservation workflows seamlessly." data-ar="نظام سحابي متكامل لإدارة الفنادق مع مزامنة حجوزات فورية، تحليلات الإيرادات، ودعم متعدد الخصائص. يدير عمليات الحجز المعقدة بسلاسة تامة.">A comprehensive cloud-based hotel property management system with real-time booking synchronization, revenue analytics, and multi-property support. Handles complex reservation workflows seamlessly.</p>
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-xs text-gray-500"><i class="fas fa-database me-1"></i> MySQL</span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-bolt me-1"></i> Redis</span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-chart-line me-1"></i> <span data-en="Analytics" data-ar="تحليلات">Analytics</span></span>
+                                </div>
+                                <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" rel="noopener noreferrer" class="text-neon-cyan text-sm font-medium hover:underline flex items-center gap-1">
+                                    <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span> <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Full-Stack E-Commerce -->
+                <div class="project-card glass rounded-2xl overflow-hidden neon-glow-purple group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Project Info (reversed for even) -->
+                        <div class="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
+                            <span class="text-neon-purple font-mono text-sm mb-2" data-en="Featured Project" data-ar="مشروع مميز">Featured Project</span>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-neon-purple transition-colors" data-en="Full-Stack E-Commerce" data-ar="متجر إلكتروني متكامل">Full-Stack E-Commerce</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-en="Enterprise-grade e-commerce platform with Laravel backend API and Next.js frontend. Features include real-time inventory, advanced search, payment processing, and admin dashboard with business intelligence." data-ar="منصة تجارة إلكترونية متقدمة بخادم Laravel وواجهة Next.js. تشمل إدارة المخزون الفوري، البحث المتقدم، معالجة المدفوعات، ولوحة تحكم مع تحليلات الأعمال.">Enterprise-grade e-commerce platform with Laravel backend API and Next.js frontend. Features include real-time inventory, advanced search, payment processing, and admin dashboard with business intelligence.</p>
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-xs text-gray-500"><i class="fas fa-shopping-cart me-1"></i> <span data-en="E-Commerce" data-ar="تجارة">E-Commerce</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-credit-card me-1"></i> Stripe</span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-tachometer-alt me-1"></i> <span data-en="Dashboard" data-ar="لوحة تحكم">Dashboard</span></span>
+                                </div>
+                                <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" rel="noopener noreferrer" class="text-neon-purple text-sm font-medium hover:underline flex items-center gap-1">
+                                    <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span> <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project Visual -->
+                        <div class="relative h-72 lg:h-auto bg-gradient-to-br from-neon-purple/20 to-neon-pink/20 flex items-center justify-center overflow-hidden order-1 lg:order-2">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 75% 25%, rgba(168, 85, 247, 0.3) 0%, transparent 50%), radial-gradient(circle at 25% 75%, rgba(244, 114, 182, 0.3) 0%, transparent 50%);"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-shopping-bag text-7xl text-neon-purple mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                <h3 class="text-2xl font-bold text-white">E-Commerce</h3>
+                            </div>
+                            
+                            <!-- Hover Overlay -->
+                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-dark-base/95 via-dark-base/70 to-transparent flex items-end p-8">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full">Laravel</span>
+                                    <span class="px-3 py-1 bg-neon-pink/20 text-neon-pink text-xs rounded-full">Next.js</span>
+                                    <span class="px-3 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full">Stripe</span>
+                                    <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs rounded-full">Redis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Laundry POS -->
+                <div class="project-card glass rounded-2xl overflow-hidden neon-glow group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Project Visual -->
+                        <div class="relative h-72 lg:h-auto bg-gradient-to-br from-neon-green/20 to-neon-cyan/20 flex items-center justify-center overflow-hidden">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 70%, rgba(34, 211, 238, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(100, 255, 218, 0.3) 0%, transparent 50%);"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-cash-register text-7xl text-neon-green mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                <h3 class="text-2xl font-bold text-white" data-en="Laundry POS" data-ar="نقاط بيع المغاسل">Laundry POS</h3>
+                            </div>
+                            
+                            <!-- Hover Overlay -->
+                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-dark-base/95 via-dark-base/70 to-transparent flex items-end p-8">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-neon-green/20 text-neon-green text-xs rounded-full">Flutter</span>
+                                    <span class="px-3 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full">Android</span>
+                                    <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs rounded-full">SQflite</span>
+                                    <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full">POS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Info -->
+                        <div class="p-8 lg:p-12 flex flex-col justify-center">
+                            <span class="text-neon-green font-mono text-sm mb-2" data-en="Featured Project" data-ar="مشروع مميز">Featured Project</span>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-neon-green transition-colors" data-en="Laundry POS System" data-ar="نظام مبيعات المغاسل">Laundry POS System</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-en="Android POS application for laundry businesses with order management, customer tracking, pricing matrix, receipt printing, and daily/weekly/monthly sales reports. Fully offline-capable." data-ar="تطبيق نقاط بيع للأندرويد خاص بالمغاسل مع إدارة الطلبات، تتبع العملاء، مصفوفة التسعير، طباعة الإيصالات، وتقارير مبيعات يومية/أسبوعية/شهرية. يعمل بالكامل بدون إنترنت.">Android POS application for laundry businesses with order management, customer tracking, pricing matrix, receipt printing, and daily/weekly/monthly sales reports. Fully offline-capable.</p>
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-xs text-gray-500"><i class="fas fa-receipt me-1"></i> <span data-en="Receipts" data-ar="إيصالات">Receipts</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-users me-1"></i> <span data-en="Customers" data-ar="عملاء">Customers</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-wifi-slash me-1"></i> <span data-en="Offline" data-ar="بدون نت">Offline</span></span>
+                                </div>
+                                <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" rel="noopener noreferrer" class="text-neon-green text-sm font-medium hover:underline flex items-center gap-1">
+                                    <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span> <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Synced Cloud Calendar -->
+                <div class="project-card glass rounded-2xl overflow-hidden neon-glow-purple group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Project Info -->
+                        <div class="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
+                            <span class="text-neon-purple font-mono text-sm mb-2" data-en="Featured Project" data-ar="مشروع مميز">Featured Project</span>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-neon-purple transition-colors" data-en="Synced Cloud Calendar" data-ar="تطبيق تقويم ذكي">Synced Cloud Calendar</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-en="Smart calendar application with Android mobile and web interfaces. Features real-time synchronization across devices, shared calendars, event reminders, and team collaboration tools." data-ar="تطبيق تقويم ذكي بواجهات موبايل أندرويد وويب. يشمل المزامنة الفورية عبر الأجهزة، التقاويم المشتركة، تذكيرات الأحداث، وأدوات تعاون الفريق.">Smart calendar application with Android mobile and web interfaces. Features real-time synchronization across devices, shared calendars, event reminders, and team collaboration tools.</p>
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-xs text-gray-500"><i class="fas fa-sync me-1"></i> <span data-en="Real-time" data-ar="فوري">Real-time</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-share-alt me-1"></i> <span data-en="Shared" data-ar="مشترك">Shared</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-bell me-1"></i> <span data-en="Reminders" data-ar="تذكيرات">Reminders</span></span>
+                                </div>
+                                <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" rel="noopener noreferrer" class="text-neon-purple text-sm font-medium hover:underline flex items-center gap-1">
+                                    <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span> <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project Visual -->
+                        <div class="relative h-72 lg:h-auto bg-gradient-to-br from-neon-purple/20 to-neon-blue/20 flex items-center justify-center overflow-hidden order-1 lg:order-2">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 60% 40%, rgba(168, 85, 247, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 60%, rgba(0, 212, 255, 0.3) 0%, transparent 50%);"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-calendar-alt text-7xl text-neon-purple mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                <h3 class="text-2xl font-bold text-white" data-en="Cloud Calendar" data-ar="تقويم سحابي">Cloud Calendar</h3>
+                            </div>
+
+                            <!-- Hover Overlay -->
+                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-dark-base/95 via-dark-base/70 to-transparent flex items-end p-8">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full">Flutter</span>
+                                    <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs rounded-full">Next.js</span>
+                                    <span class="px-3 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full">Firebase</span>
+                                    <span class="px-3 py-1 bg-neon-green/20 text-neon-green text-xs rounded-full">Sync</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: University Student Service System -->
+                <div class="project-card glass rounded-2xl overflow-hidden neon-glow group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Project Visual -->
+                        <div class="relative h-72 lg:h-auto bg-gradient-to-br from-neon-cyan/20 to-neon-green/20 flex items-center justify-center overflow-hidden">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 75%, rgba(100, 255, 218, 0.3) 0%, transparent 50%), radial-gradient(circle at 75% 25%, rgba(34, 211, 238, 0.3) 0%, transparent 50%);"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-user-graduate text-7xl text-neon-cyan mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                <h3 class="text-2xl font-bold text-white" data-en="Student Services" data-ar="خدمات الطلاب">Student Services</h3>
+                            </div>
+
+                            <!-- Hover Overlay -->
+                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-dark-base/95 via-dark-base/70 to-transparent flex items-end p-8">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full">PHP</span>
+                                    <span class="px-3 py-1 bg-neon-green/20 text-neon-green text-xs rounded-full">Flutter</span>
+                                    <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs rounded-full">MySQL</span>
+                                    <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full">REST API</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Info -->
+                        <div class="p-8 lg:p-12 flex flex-col justify-center">
+                            <span class="text-neon-cyan font-mono text-sm mb-2" data-en="Featured Project" data-ar="مشروع مميز">Featured Project</span>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-neon-cyan transition-colors" data-en="University Student Service System" data-ar="نظام خدمة الطالب الجامعي">University Student Service System</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-en="Comprehensive mobile platform for university students with PHP backend and Flutter mobile app. Features course registration, grade tracking, academic schedule management, notifications, and seamless integration with university systems." data-ar="منصة موبايل شاملة لطلاب الجامعات بخادم PHP وتطبيق Flutter. يشمل التسجيل الدراسي، تتبع الدرجات، إدارة الجداول الأكاديمية، الإشعارات، والتكامل السلس مع الأنظمة الجامعية.">Comprehensive mobile platform for university students with PHP backend and Flutter mobile app. Features course registration, grade tracking, academic schedule management, notifications, and seamless integration with university systems.</p>
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-xs text-gray-500"><i class="fas fa-graduation-cap me-1"></i> <span data-en="Academic" data-ar="أكاديمي">Academic</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-chart-bar me-1"></i> <span data-en="Grades" data-ar="الدرجات">Grades</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-bell me-1"></i> <span data-en="Notifications" data-ar="إشعارات">Notifications</span></span>
+                                </div>
+                                <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" rel="noopener noreferrer" class="text-neon-cyan text-sm font-medium hover:underline flex items-center gap-1">
+                                    <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span> <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Hotel Internal Supervision System -->
+                <div class="project-card glass rounded-2xl overflow-hidden neon-glow-purple group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Project Info -->
+                        <div class="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
+                            <span class="text-neon-purple font-mono text-sm mb-2" data-en="Featured Project" data-ar="مشروع مميز">Featured Project</span>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-neon-purple transition-colors" data-en="Hotel Internal Supervision System" data-ar="نظام الإشراف الداخلي للفنادق">Hotel Internal Supervision System</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-en="Enterprise platform for tracking hotel internal supervision end-to-end. Built with a Laravel PHP backend, a Flutter app for field workers, and a React admin dashboard. Covers daily supervision rounds, task assignment and follow-up, and real-time work statistics." data-ar="منصة مؤسسية لمتابعة الإشراف الداخلي للفنادق من الألف إلى الياء. مبنية بواجهة خلفية Laravel، وتطبيق Flutter للعاملين الميدانيين، ولوحة تحكم React للإدارة. تغطي جولات الإشراف اليومية، تعيين المهام ومتابعتها، وإحصائيات العمل الفورية.">Enterprise platform for tracking hotel internal supervision end-to-end. Built with a Laravel PHP backend, a Flutter app for field workers, and a React admin dashboard. Covers daily supervision rounds, task assignment and follow-up, and real-time work statistics.</p>
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-xs text-gray-500"><i class="fas fa-tasks me-1"></i> <span data-en="Tasks" data-ar="مهام">Tasks</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-clipboard-check me-1"></i> <span data-en="Follow-up" data-ar="متابعة">Follow-up</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-chart-pie me-1"></i> <span data-en="Statistics" data-ar="إحصائيات">Statistics</span></span>
+                                </div>
+                                <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" rel="noopener noreferrer" class="text-neon-purple text-sm font-medium hover:underline flex items-center gap-1">
+                                    <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span> <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Project Visual -->
+                        <div class="relative h-72 lg:h-auto bg-gradient-to-br from-neon-purple/20 to-neon-blue/20 flex items-center justify-center overflow-hidden order-1 lg:order-2">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 40% 30%, rgba(168, 85, 247, 0.3) 0%, transparent 50%), radial-gradient(circle at 60% 70%, rgba(0, 212, 255, 0.3) 0%, transparent 50%);"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-clipboard-check text-7xl text-neon-purple mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                <h3 class="text-2xl font-bold text-white" data-en="Internal Supervision" data-ar="إشراف داخلي">Internal Supervision</h3>
+                            </div>
+
+                            <!-- Hover Overlay -->
+                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-dark-base/95 via-dark-base/70 to-transparent flex items-end p-8">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full">Laravel</span>
+                                    <span class="px-3 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full">PHP</span>
+                                    <span class="px-3 py-1 bg-neon-green/20 text-neon-green text-xs rounded-full">Flutter</span>
+                                    <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs rounded-full">React</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: Employee Attendance System -->
+                <div class="project-card glass rounded-2xl overflow-hidden neon-glow group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Project Visual -->
+                        <div class="relative h-72 lg:h-auto bg-gradient-to-br from-neon-cyan/20 to-neon-blue/20 flex items-center justify-center overflow-hidden">
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 75%, rgba(100, 255, 218, 0.3) 0%, transparent 50%), radial-gradient(circle at 75% 25%, rgba(0, 212, 255, 0.3) 0%, transparent 50%);"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <i class="fas fa-qrcode text-7xl text-neon-cyan mb-4 group-hover:scale-110 transition-transform duration-500"></i>
+                                <h3 class="text-2xl font-bold text-white" data-en="Attendance System" data-ar="نظام الحضور">Attendance System</h3>
+                            </div>
+
+                            <!-- Hover Overlay -->
+                            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-dark-base/95 via-dark-base/70 to-transparent flex items-end p-8">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-neon-cyan/20 text-neon-cyan text-xs rounded-full">NestJS</span>
+                                    <span class="px-3 py-1 bg-neon-green/20 text-neon-green text-xs rounded-full">Flutter</span>
+                                    <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs rounded-full" data-en="Flutter Desktop" data-ar="فلاتر ديسكتوب">Flutter Desktop</span>
+                                    <span class="px-3 py-1 bg-neon-purple/20 text-neon-purple text-xs rounded-full">React</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project Info -->
+                        <div class="p-8 lg:p-12 flex flex-col justify-center">
+                            <span class="text-neon-cyan font-mono text-sm mb-2" data-en="Featured Project" data-ar="مشروع مميز">Featured Project</span>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-neon-cyan transition-colors" data-en="Employee Attendance System" data-ar="نظام حضور وانصراف الموظفين">Employee Attendance System</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-en="Enterprise employee attendance system with barcode-based check-in and check-out. Employees scan their personal barcode to record attendance instantly in the system. Built with a NestJS backend, a Flutter mobile app for employees, a Flutter Desktop scanning station, and a React admin dashboard for statistics and reports." data-ar="نظام مؤسسي لحضور وانصراف الموظفين بتصوير الباركود. يسجل الموظف حضوره وانصرافه بتصوير الباركود الخاص به وتُسجل البيانات فورًا في النظام. مبني بواجهة خلفية NestJS، وتطبيق موبايل Flutter للموظف، وشاشة تصوير باركود بـ Flutter Desktop، ولوحة تحكم React للإحصائيات والتقارير.">Enterprise employee attendance system with barcode-based check-in and check-out. Employees scan their personal barcode to record attendance instantly in the system. Built with a NestJS backend, a Flutter mobile app for employees, a Flutter Desktop scanning station, and a React admin dashboard for statistics and reports.</p>
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-xs text-gray-500"><i class="fas fa-qrcode me-1"></i> <span data-en="Barcode" data-ar="باركود">Barcode</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-user-clock me-1"></i> <span data-en="Check-in / Out" data-ar="حضور / انصراف">Check-in / Out</span></span>
+                                    <span class="text-xs text-gray-500"><i class="fas fa-chart-bar me-1"></i> <span data-en="Reports" data-ar="تقارير">Reports</span></span>
+                                </div>
+                                <a href="https://github.com/MOHAMMED-SADEQ1/attendance-backend-system-AHJ" target="_blank" rel="noopener noreferrer" class="text-neon-cyan text-sm font-medium hover:underline flex items-center gap-1">
+                                    <span data-en="View Details" data-ar="عرض التفاصيل">View Details</span> <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- More Projects CTA -->
+            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="600">
+                <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" class="btn-outline inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold magnetic-btn">
+                    <i class="fab fa-github text-xl"></i>
+                    <span data-en="View More on GitHub" data-ar="شاهد المزيد على GitHub">View More on GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider mx-auto max-w-4xl"></div>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <p class="text-neon-cyan font-mono text-sm mb-2" data-aos="fade-down" data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">
+                    <span class="gradient-text" data-en="Let's Work Together" data-ar="لنعمل معاً">Let's Work Together</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100" data-en="Have a project in mind or want to discuss a collaboration? I'd love to hear from you." data-ar="لدي مشروع في ذهنك أو تريد مناقشة تعاون؟ يسعدني أن أسمع منك.">Have a project in mind or want to discuss a collaboration? I'd love to hear from you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                
+                <!-- Contact Info -->
+                <div data-aos="fade-right" data-aos-delay="200">
+                    <div class="glass rounded-2xl p-10 h-full">
+                        <h3 class="text-2xl font-bold mb-6" data-en="Contact Information" data-ar="معلومات الاتصال">Contact Information</h3>
+                        <p class="text-gray-400 mb-10" data-en="I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision." data-ar="أنا دائماً منفتح لمناقشة المشاريع الجديدة، والأفكار الإبداعية، أو الفرص لأكون جزءاً من رؤيتك.">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+
+                        <!-- Contact Details -->
+                        <div class="space-y-6 mb-10">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-neon-cyan/10 flex items-center justify-center text-neon-cyan">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500" data-en="Email" data-ar="البريد الإلكتروني">Email</p>
+                                    <a href="mailto:mohammadsadekaljafri@gmail.com" class="hover:text-neon-cyan transition-colors">mohammadsadekaljafri@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-neon-purple/10 flex items-center justify-center text-neon-purple">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500" data-en="Location" data-ar="الموقع">Location</p>
+                                    <p data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-neon-green/10 flex items-center justify-center text-neon-green">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500" data-en="Availability" data-ar="المتاحة">Availability</p>
+                                    <p class="text-neon-green" data-en="Open for freelance projects" data-ar="متاح للمشاريع الحرة">Open for freelance projects</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div>
+                            <p class="text-sm text-gray-500 mb-4" data-en="Follow me on" data-ar="تابعني على">Follow me on</p>
+                            <div class="flex items-center gap-4">
+                                <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" class="social-icon w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:border-neon-cyan">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="social-icon w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:border-neon-cyan">
+                                    <i class="fab fa-linkedin-in text-xl"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="social-icon w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-neon-cyan hover:border-neon-cyan">
+                                    <i class="fab fa-x-twitter text-xl"></i>
+                                </a>
+                                <a href="https://wa.me/966537498756" target="_blank" class="social-icon w-12 h-12 rounded-full glass flex items-center justify-center text-gray-400 hover:text-neon-green hover:border-neon-green">
+                                    <i class="fab fa-whatsapp text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div data-aos="fade-left" data-aos-delay="400">
+                    <form id="contact-form" class="glass rounded-2xl p-10">
+                        <h3 class="text-2xl font-bold mb-6" data-en="Send a Message" data-ar="أرسل رسالة">Send a Message</h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Name -->
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2" data-en="Your Name" data-ar="اسمك">Your Name</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    required
+                                    class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none transition-all"
+                                    data-placeholder-en="John Doe"
+                                    data-placeholder-ar="محمد صادق"
+                                    placeholder="John Doe"
+                                >
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2" data-en="Your Email" data-ar="بريدك الإلكتروني">Your Email</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    required
+                                    class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none transition-all"
+                                    placeholder="john@example.com"
+                                >
+                            </div>
+
+                            <!-- Subject -->
+                            <div>
+                                <label for="subject" class="block text-sm font-medium mb-2" data-en="Subject" data-ar="الموضوع">Subject</label>
+                                <input 
+                                    type="text" 
+                                    id="subject" 
+                                    name="subject" 
+                                    required
+                                    class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none transition-all"
+                                    data-placeholder-en="Project Inquiry"
+                                    data-placeholder-ar="استفسار عن مشروع"
+                                    placeholder="Project Inquiry"
+                                >
+                            </div>
+
+                            <!-- Message -->
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-2" data-en="Message" data-ar="الرسالة">Message</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    rows="5" 
+                                    required
+                                    class="form-input w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none transition-all resize-none"
+                                    data-placeholder-en="Tell me about your project..."
+                                    data-placeholder-ar="أخبرني عن مشروعك..."
+                                    placeholder="Tell me about your project..."
+                                ></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button 
+                                type="submit" 
+                                class="btn-primary w-full px-8 py-4 rounded-lg font-semibold text-lg magnetic-btn"
+                            >
+                                <span class="flex items-center justify-center gap-2">
+                                    <i class="fas fa-paper-plane"></i> <span data-en="Send Message" data-ar="إرسال الرسالة">Send Message</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Success/Error Messages -->
+                        <div id="form-message" class="mt-4 hidden"></div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <!-- Logo -->
+                <a href="#hero" class="text-2xl font-bold font-mono">
+                    <span class="text-neon-cyan">&lt;</span>
+                    <span class="gradient-text">MS</span>
+                    <span class="text-neon-cyan">/&gt;</span>
+                </a>
+
+                <!-- Copyright -->
+                <p class="text-gray-500 text-sm text-center">
+                    &copy; <span id="current-year"></span> <span data-en="MOHAMMED SADEQ ABDO AHMED. All rights reserved." data-ar="محمد صادق. جميع الحقوق محفوظة.">MOHAMMED SADEQ ABDO AHMED. All rights reserved.</span>
+                </p>
+
+                <!-- Back to Top -->
+                <a href="#hero" class="social-icon w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-neon-cyan">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="javascript.js"></script>
+</body>
+</html>

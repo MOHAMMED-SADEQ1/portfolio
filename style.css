@@ -1,0 +1,700 @@
+/* ============================================================
+   PROFESSIONAL PORTFOLIO - STYLES
+   Dark Mode Only - Advanced Animations, Glassmorphism
+   ============================================================ */
+
+/* ============================================================
+   CSS VARIABLES & BASE
+   ============================================================ */
+:root {
+    --glass-bg: rgba(17, 34, 64, 0.7);
+    --glass-border: rgba(100, 255, 218, 0.1);
+    --glass-blur: 20px;
+    --neon-cyan: #64ffda;
+    --neon-blue: #00d4ff;
+    --neon-purple: #a855f7;
+    --neon-green: #22d3ee;
+    --neon-pink: #f472b6;
+    --bg-base: #0a192f;
+    --bg-light: #112240;
+    --bg-lighter: #1d3461;
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --text-heading: #e6f1ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-base);
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Inter', 'Cairo', sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Support */
+[dir="rtl"] body {
+    font-family: 'Cairo', 'Inter', sans-serif;
+}
+
+[dir="rtl"] .font-mono {
+    font-family: 'Cairo', 'JetBrains Mono', monospace;
+}
+
+[dir="rtl"] {
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   NOISE TEXTURE OVERLAY
+   ============================================================ */
+.noise-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    mix-blend-mode: overlay;
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    z-index: 10000;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+/* ============================================================
+   CUSTOM CURSOR
+   ============================================================ */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    mix-blend-mode: difference;
+}
+
+.cursor-ring {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(100, 255, 218, 0.5);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.15s ease;
+}
+
+.cursor-ring.hover {
+    width: 60px;
+    height: 60px;
+    border-color: var(--neon-cyan);
+    background: rgba(100, 255, 218, 0.1);
+}
+
+/* ============================================================
+   PARTICLE CANVAS
+   ============================================================ */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ============================================================
+   GLASS CARD EFFECTS
+   ============================================================ */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(100, 255, 218, 0.15);
+}
+
+/* ============================================================
+   NEON GLOW EFFECTS
+   ============================================================ */
+.neon-glow {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.neon-glow:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 0 15px rgba(100, 255, 218, 0.4),
+        0 0 30px rgba(100, 255, 218, 0.2),
+        0 0 45px rgba(100, 255, 218, 0.1);
+    border-color: var(--neon-cyan);
+}
+
+.neon-glow-purple {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.neon-glow-purple:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 0 15px rgba(168, 85, 247, 0.4),
+        0 0 30px rgba(168, 85, 247, 0.2),
+        0 0 45px rgba(168, 85, 247, 0.1);
+    border-color: var(--neon-purple);
+}
+
+/* ============================================================
+   GRADIENT TEXT
+   ============================================================ */
+.gradient-text {
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   SECTION DIVIDER
+   ============================================================ */
+.section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
+    position: relative;
+}
+
+.section-divider::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+/* ============================================================
+   TYPING CURSOR
+   ============================================================ */
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background: var(--neon-cyan);
+    margin-inline-start: 4px;
+    animation: blink 0.8s infinite;
+    vertical-align: middle;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* ============================================================
+   BUTTON STYLES
+   ============================================================ */
+.btn-primary {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.btn-primary:hover::before {
+    transform: translateX(0);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
+}
+
+.btn-outline {
+    border: 1px solid rgba(100, 255, 218, 0.3);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    transform: translateY(-3px);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-cyan);
+    transition: width 0.3s ease;
+}
+
+[dir="rtl"] .nav-link::after {
+    left: auto;
+    right: 0;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ============================================================
+   SKILL PROGRESS BARS
+   ============================================================ */
+.skill-bar {
+    width: 0;
+    transition: width 1.5s ease-out;
+}
+
+.skill-bar.animated {
+    width: var(--skill-level);
+}
+
+/* ============================================================
+   PROJECT CARD EFFECTS
+   ============================================================ */
+.project-overlay {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   SOCIAL ICON HOVER
+   ============================================================ */
+.social-icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) rotate(5deg);
+    color: var(--neon-cyan);
+}
+
+/* ============================================================
+   FORM INPUT FOCUS
+   ============================================================ */
+.form-input {
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.2);
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--neon-blue), var(--neon-pink));
+}
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+[dir="rtl"] .mobile-menu {
+    right: auto;
+    left: 0;
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .mobile-menu.open {
+    transform: translateX(0);
+}
+
+/* ============================================================
+   LANGUAGE TOGGLE
+   ============================================================ */
+.lang-toggle {
+    transition: all 0.3s ease;
+}
+
+.lang-toggle:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* ============================================================
+   MAGNETIC BUTTON EFFECT
+   ============================================================ */
+.magnetic-btn {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   TEXT REVEAL ANIMATION
+   ============================================================ */
+.text-reveal {
+    overflow: hidden;
+}
+
+.text-reveal span {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-reveal.revealed span {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ============================================================
+   GLITCH EFFECT ON HOVER
+   ============================================================ */
+.glitch-hover:hover {
+    animation: glitch 0.3s ease;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* ============================================================
+   GRADIENT ORBS
+   ============================================================ */
+.gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+/* ============================================================
+   SMOOTH LANGUAGE TRANSITION
+   ============================================================ */
+.lang-transition * {
+    transition: opacity 0.3s ease;
+}
+
+/* ============================================================
+   RTL ARROW SUPPORT
+   ============================================================ */
+[dir="rtl"] .fa-arrow-right {
+    transform: rotate(180deg);
+}
+
+[dir="rtl"] .fa-arrow-left {
+    transform: rotate(180deg);
+}
+
+/* ============================================================
+   TILT CARD EFFECT
+   ============================================================ */
+.tilt-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform;
+}
+
+/* ============================================================
+   PARALLAX ELEMENTS
+   ============================================================ */
+.parallax-element {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+}
+
+/* ============================================================
+   FLOATING ANIMATIONS
+   ============================================================ */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+    animation: floatSlow 8s ease-in-out infinite;
+}
+
+/* ============================================================
+   PULSE ANIMATIONS
+   ============================================================ */
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ============================================================
+   RESPONSIVE - TABLET
+   ============================================================ */
+@media (max-width: 1024px) {
+    .cursor-dot,
+    .cursor-ring {
+        display: none !important;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE - MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+    .gradient-orb {
+        filter: blur(40px);
+        opacity: 0.1;
+    }
+    
+    .section-divider::before {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* ============================================================
+   FORM STATUS MESSAGE
+   ============================================================ */
+@keyframes fadeInMessage {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   PROFILE IMAGE MODAL
+   ============================================================ */
+#profile-modal {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#profile-modal.active {
+    opacity: 1;
+}
+
+#profile-modal .hexagon-outer {
+    animation: modalHexEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modalHexEnter {
+    0% {
+        transform: scale(0.3) rotate(-30deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+#profile-modal .hexagon-glow {
+    animation: modalGlowPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes modalGlowPulse {
+    0% {
+        opacity: 0.4;
+        filter: blur(20px);
+    }
+    100% {
+        opacity: 0.8;
+        filter: blur(30px);
+    }
+}
+
+/* RTL Support for Modal Close Button */
+[dir="rtl"] #modal-close {
+    right: auto;
+    left: 0;
+}
+
+/* ============================================================
+   HEXAGONAL PROFILE IMAGE
+   ============================================================ */
+.hexagon-outer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    padding: 5px;
+    animation: hexagonFloat 6s ease-in-out infinite;
+    z-index: 2;
+}
+
+.hexagon-inner {
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: var(--bg-base);
+    padding: 4px;
+    overflow: hidden;
+}
+
+.hexagon-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagon-glow {
+    position: absolute;
+    inset: -15px;
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    filter: blur(25px);
+    opacity: 0.5;
+    z-index: 1;
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes hexagonFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+@keyframes glowPulse {
+    0% {
+        opacity: 0.3;
+        filter: blur(20px);
+    }
+    100% {
+        opacity: 0.6;
+        filter: blur(25px);
+    }
+}
+
+/* ============================================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .gradient-orb {
+        animation: none;
+    }
+    
+    .cursor-dot,
+    .cursor-ring {
+        display: none !important;
+    }
+}
