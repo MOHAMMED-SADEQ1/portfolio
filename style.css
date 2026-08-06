@@ -125,16 +125,173 @@ html {
 }
 
 /* ============================================================
-   PARTICLE CANVAS
+   STARFIELD & AURORA BACKGROUND (pure CSS, GPU-accelerated)
+   Zero per-frame JavaScript — all animations run on the
+   compositor thread via opacity/transform keyframes.
    ============================================================ */
-#particles-canvas {
+.starfield {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 0;
     pointer-events: none;
+    overflow: hidden;
+}
+
+/* --- Star layers -------------------------------------------------- */
+.star-layer {
+    position: absolute;
+    inset: 0;
+}
+
+.star {
+    position: absolute;
+    border-radius: 50%;
+    background: #d9f2ff;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+.star-layer[data-layer="md"] .star {
+    background: #eaf9ff;
+}
+
+.star-layer[data-layer="lg"] .star {
+    background: #ffffff;
+    box-shadow: 0 0 6px 1px rgba(100, 255, 218, 0.75);
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: var(--min, 0.15);
+        transform: scale(1);
+    }
+    50% {
+        opacity: var(--max, 0.8);
+        transform: scale(1.4);
+    }
+}
+
+/* --- Aurora glow blobs ---------------------------------------------- */
+.aurora-wrap {
+    position: absolute;
+    inset: 0;
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.aurora {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.26;
+    mix-blend-mode: screen;
+    will-change: transform;
+}
+
+.aurora-1 {
+    width: 55vmax;
+    height: 55vmax;
+    top: -18%;
+    left: -12%;
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.55) 0%, transparent 65%);
+    animation: drift-a 26s ease-in-out infinite alternate;
+}
+
+.aurora-2 {
+    width: 48vmax;
+    height: 48vmax;
+    bottom: -22%;
+    right: -14%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, transparent 65%);
+    animation: drift-b 32s ease-in-out infinite alternate;
+}
+
+.aurora-3 {
+    width: 40vmax;
+    height: 40vmax;
+    top: 30%;
+    right: -8%;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.45) 0%, transparent 65%);
+    animation: drift-c 22s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+        transform: translate3d(8vmax, 10vmax, 0) scale(1.15);
+    }
+}
+
+@keyframes drift-b {
+    from {
+        transform: translate3d(0, 0, 0) scale(1.1);
+    }
+    to {
+        transform: translate3d(-9vmax, -7vmax, 0) scale(1);
+    }
+}
+
+@keyframes drift-c {
+    from {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+        transform: translate3d(-6vmax, 8vmax, 0) scale(1.2);
+    }
+}
+
+/* --- Shooting star --------------------------------------------------- */
+.shooting-star {
+    position: absolute;
+    top: 14%;
+    right: 18%;
+    width: 150px;
+    height: 1.5px;
+    background: linear-gradient(
+        270deg,
+        rgba(255, 255, 255, 0.95),
+        rgba(100, 255, 218, 0.4) 60%,
+        transparent
+    );
+    border-radius: 2px;
+    opacity: 0;
+    animation: shoot 11s linear infinite;
+}
+
+@keyframes shoot {
+    0%, 6% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(-32deg);
+    }
+    7% {
+        opacity: 1;
+    }
+    11% {
+        opacity: 0;
+        transform: translate3d(-38vmax, 21vmax, 0) rotate(-32deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(-38vmax, 21vmax, 0) rotate(-32deg);
+    }
+}
+
+/* --- Reduced motion: static stars, no drift --------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    .star {
+        animation: none !important;
+        opacity: 0.45 !important;
+    }
+    .aurora,
+    .shooting-star {
+        animation: none !important;
+        opacity: 0.1 !important;
+    }
+    .aurora-wrap {
+        transition: none !important;
+    }
 }
 
 /* ============================================================

@@ -23,7 +23,6 @@
   const cursorDot = document.getElementById("cursor-dot");
   const cursorRing = document.getElementById("cursor-ring");
   const scrollProgress = document.getElementById("scroll-progress");
-  const particlesCanvas = document.getElementById("particles-canvas");
   const typingText = document.getElementById("typing-text");
   const profileModal = document.getElementById("profile-modal");
   const profileTrigger = document.getElementById("profile-trigger");
@@ -58,8 +57,11 @@
       });
     }
 
+    // Detect reduced-motion first so every component below (starfield
+    // parallax included) can honor it at init time.
+    checkReducedMotion();
     initLanguage();
-    initParticles();
+    initStarfield();
     initTypingEffect();
     initNavigation();
     initSkillBars();
@@ -71,7 +73,6 @@
     initParallaxOrbs();
     initSmoothScroll();
     setCurrentYear();
-    checkReducedMotion();
     initProfileModal();
   }
 
@@ -144,247 +145,65 @@
   }
 
   /* ==========================================================
-       3. PARTICLE BACKGROUND (Advanced)
+       3. STARFIELD & AURORA BACKGROUND (pure CSS, GPU-accelerated)
        ========================================================== */
-  function initParticles() {
-    if (!particlesCanvas) return;
+  function initStarfield() {
+    const starfield = document.getElementById("starfield");
+    if (!starfield) return;
 
-    const ctx = particlesCanvas.getContext("2d");
-    let particles = [];
-    let animationId;
+    // Star generation is one-time DOM creation; from then on the stars,
+    // aurora blobs and shooting star are animated purely by CSS on the
+    // compositor (GPU) thread — zero per-frame JavaScript.
+    const rand = (a, b) => a + Math.random() * (b - a);
 
-    // Connection & interaction parameters (visual output unchanged)
-    const maxDistance = 150;
-    const mouseMaxDistance = 120;
-    const cellSize = maxDistance;
+    const layers = [
+      // key, count, minSize, maxSize, minOpacity, maxOpacity, durRange
+      { key: "sm", count: 55, min: 1.0, max: 1.6, minO: 0.12, maxO: 0.45, dur: [2.2, 4.2] },
+      { key: "md", count: 28, min: 1.6, max: 2.4, minO: 0.2, maxO: 0.65, dur: [2.8, 5.2] },
+      { key: "lg", count: 12, min: 2.4, max: 3.4, minO: 0.3, maxO: 0.95, dur: [3.2, 6.0] },
+    ];
 
-    // CSS-pixel viewport size; the canvas backing store is scaled by
-    // devicePixelRatio so particles stay crisp on high-DPI screens.
-    let cssWidth = window.innerWidth;
-    let cssHeight = window.innerHeight;
+    layers.forEach((cfg) => {
+      const layer = starfield.querySelector(
+        `.star-layer[data-layer="${cfg.key}"]`,
+      );
+      if (!layer) return;
 
-    // Spatial grid for fast neighbor lookups (avoids the O(n²) scan)
-    let grid = [];
-    let gridCols = 0;
-    let gridRows = 0;
-
-    // Resize handler (devicePixelRatio-aware, debounced)
-    function resize() {
-      cssWidth = window.innerWidth;
-      cssHeight = window.innerHeight;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      // Math.round (not floor) so the backing store matches the transform
-      // extent on fractional DPRs and no edge strip is left stale
-      particlesCanvas.width = Math.max(1, Math.round(cssWidth * dpr));
-      particlesCanvas.height = Math.max(1, Math.round(cssHeight * dpr));
-      // Draw in CSS pixels; the transform applies the device-pixel scale
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      // Keep particles inside the new bounds
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x = Math.min(p.x, cssWidth);
-        p.y = Math.min(p.y, cssHeight);
-        p.baseX = Math.min(p.baseX, cssWidth);
-        p.baseY = Math.min(p.baseY, cssHeight);
+      const fragment = document.createDocumentFragment();
+      for (let i = 0; i < cfg.count; i++) {
+        const star = document.createElement("span");
+        star.className = "star";
+        const size = rand(cfg.min, cfg.max).toFixed(1);
+        star.style.cssText =
+          `left:${rand(0, 100).toFixed(2)}%;` +
+          `top:${rand(0, 100).toFixed(2)}%;` +
+          `width:${size}px;height:${size}px;` +
+          `--min:${rand(cfg.minO, cfg.maxO * 0.6).toFixed(2)};` +
+          `--max:${cfg.maxO.toFixed(2)};` +
+          `--dur:${rand(cfg.dur[0], cfg.dur[1]).toFixed(2)}s;` +
+          `--delay:${(-rand(0, 8)).toFixed(2)}s;`;
+        fragment.appendChild(star);
       }
-    }
-
-    let resizeTimer;
-    function onResize() {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(resize, 150);
-    }
-
-    resize();
-    window.addEventListener("resize", onResize);
-
-    // Mouse tracking
-    let mouseActive = false;
-    window.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      mouseActive = true;
+      layer.appendChild(fragment);
     });
 
-    // Particle class
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-
-      reset() {
-        this.x = Math.random() * cssWidth;
-        this.y = Math.random() * cssHeight;
-        this.size = Math.random() * 2 + 0.5;
-        this.baseX = this.x;
-        this.baseY = this.y;
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.speedY = (Math.random() - 0.5) * 0.5;
-        this.opacity = Math.random() * 0.5 + 0.2;
-        this.density = Math.random() * 30 + 1;
-      }
-
-      update() {
-        // Natural movement
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // Mouse interaction (squared distance avoids sqrt for far particles)
-        if (mouseActive && mouseX > 0 && mouseY > 0) {
-          const dx = mouseX - this.x;
-          const dy = mouseY - this.y;
-          const distSq = dx * dx + dy * dy;
-
-          if (distSq < mouseMaxDistance * mouseMaxDistance) {
-            if (distSq > 0) {
-              const distance = Math.sqrt(distSq);
-              const force = (mouseMaxDistance - distance) / mouseMaxDistance;
-              const directionX = (dx / distance) * force * this.density * 0.6;
-              const directionY = (dy / distance) * force * this.density * 0.6;
-              this.x -= directionX;
-              this.y -= directionY;
-            }
-          } else if (this.x !== this.baseX || this.y !== this.baseY) {
-            // Return to base position
-            this.x -= (this.x - this.baseX) / 20;
-            this.y -= (this.y - this.baseY) / 20;
-          }
-        }
-
-        // Wrap around edges
-        if (this.x < 0) this.x = cssWidth;
-        if (this.x > cssWidth) this.x = 0;
-        if (this.y < 0) this.y = cssHeight;
-        if (this.y > cssHeight) this.y = 0;
-      }
-
-      draw() {
-        ctx.fillStyle = `rgba(100, 255, 218, ${this.opacity})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    // Aurora mouse parallax — event-driven, eased by the CSS transition
+    // on .aurora-wrap, so no animation loop is needed.
+    const wraps = Array.from(starfield.querySelectorAll(".aurora-wrap"));
+    if (wraps.length && window.innerWidth >= 1024 && !reducedMotion) {
+      document.addEventListener(
+        "mousemove",
+        (e) => {
+          const nx = (e.clientX / window.innerWidth) * 2 - 1;
+          const ny = (e.clientY / window.innerHeight) * 2 - 1;
+          wraps.forEach((wrap, i) => {
+            const depth = (i + 1) * 14;
+            wrap.style.transform = `translate3d(${(nx * depth).toFixed(1)}px, ${(ny * depth).toFixed(1)}px, 0)`;
+          });
+        },
+        { passive: true },
+      );
     }
-
-    // Particle count based on the CSS-pixel area (same density as before)
-    const particleCount = Math.min(
-      Math.floor((cssWidth * cssHeight) / 15000),
-      100,
-    );
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-
-    // Rebuild the spatial grid each frame (bucket arrays are reused)
-    function rebuildGrid() {
-      gridCols = Math.max(1, Math.ceil(cssWidth / cellSize));
-      gridRows = Math.max(1, Math.ceil(cssHeight / cellSize));
-
-      if (grid.length !== gridCols * gridRows) {
-        grid = [];
-        for (let i = 0; i < gridCols * gridRows; i++) grid.push([]);
-      } else {
-        for (let i = 0; i < grid.length; i++) grid[i].length = 0;
-      }
-
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        const cx = Math.min(
-          gridCols - 1,
-          Math.max(0, Math.floor(p.x / cellSize)),
-        );
-        const cy = Math.min(
-          gridRows - 1,
-          Math.max(0, Math.floor(p.y / cellSize)),
-        );
-        grid[cx + cy * gridCols].push(p);
-      }
-    }
-
-    // Draw one connection with the same opacity gradient as before
-    function drawLine(a, b) {
-      const dx = a.x - b.x;
-      const dy = a.y - b.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < maxDistance) {
-        const opacity = (1 - distance / maxDistance) * 0.3;
-        ctx.strokeStyle = `rgba(100, 255, 218, ${opacity})`;
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      }
-    }
-
-    // Connect nearby particles using the grid: only neighboring cells are
-    // compared, which is identical to the full O(n²) scan but far faster.
-    function connectParticles() {
-      const maxCol = gridCols - 1;
-      const maxRow = gridRows - 1;
-
-      for (let y = 0; y < gridRows; y++) {
-        for (let x = 0; x < gridCols; x++) {
-          const cell = grid[x + y * gridCols];
-          if (cell.length === 0) continue;
-
-          // Pairs inside the same cell (i < j avoids duplicates)
-          for (let i = 0; i < cell.length; i++) {
-            for (let j = i + 1; j < cell.length; j++) {
-              drawLine(cell[i], cell[j]);
-            }
-          }
-
-          // Pairs with neighboring cells — only the "forward half" of the
-          // 3x3 neighborhood is used, so every pair is drawn exactly once.
-          for (
-            let cy = Math.max(0, y - 1);
-            cy <= Math.min(maxRow, y + 1);
-            cy++
-          ) {
-            for (
-              let cx = Math.max(0, x - 1);
-              cx <= Math.min(maxCol, x + 1);
-              cx++
-            ) {
-              if (cx < x || (cx === x && cy <= y)) continue;
-              const neighbor = grid[cx + cy * gridCols];
-              if (neighbor.length === 0) continue;
-
-              for (let i = 0; i < cell.length; i++) {
-                const a = cell[i];
-                for (let j = 0; j < neighbor.length; j++) {
-                  drawLine(a, neighbor[j]);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    // Animation loop
-    function animate() {
-      // Pauses the loop entirely when prefers-reduced-motion is enabled
-      if (reducedMotion) return;
-
-      // +1 covers any sub-pixel rounding remainder on fractional DPRs
-      ctx.clearRect(0, 0, cssWidth + 1, cssHeight + 1);
-
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
-      }
-
-      rebuildGrid();
-      connectParticles();
-      animationId = requestAnimationFrame(animate);
-    }
-
-    animate();
   }
 
   /* ==========================================================
@@ -863,11 +682,8 @@
     if (prefersReducedMotion.matches) {
       reducedMotion = true;
 
-      // Disable complex animations
-      if (particlesCanvas) {
-        particlesCanvas.style.display = "none";
-      }
-
+      // Disable complex animations (the starfield is handled by the
+      // prefers-reduced-motion CSS media query)
       document.querySelectorAll(".gradient-orb").forEach((orb) => {
         orb.style.animation = "none";
       });

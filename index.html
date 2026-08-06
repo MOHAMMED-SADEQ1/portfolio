@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Main Styles -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,8 +136,16 @@
     <div class="cursor-dot hidden md:block" id="cursor-dot"></div>
     <div class="cursor-ring hidden md:block" id="cursor-ring"></div>
 
-    <!-- Dynamic Particle Background -->
-    <canvas id="particles-canvas"></canvas>
+    <!-- Starfield & Aurora Background (pure CSS, GPU-accelerated — no per-frame JS) -->
+    <div id="starfield" class="starfield" aria-hidden="true">
+        <div class="aurora-wrap" data-parallax="1"><div class="aurora aurora-1"></div></div>
+        <div class="aurora-wrap" data-parallax="2"><div class="aurora aurora-2"></div></div>
+        <div class="aurora-wrap" data-parallax="3"><div class="aurora aurora-3"></div></div>
+        <div class="star-layer" data-layer="sm"></div>
+        <div class="star-layer" data-layer="md"></div>
+        <div class="star-layer" data-layer="lg"></div>
+        <div class="shooting-star"></div>
+    </div>
 
     <!-- ==================== HEADER / NAVIGATION ==================== -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
@@ -1015,6 +1023,6 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     
     <!-- Main JavaScript -->
-    <script src="javascript.js"></script>
+    <script src="javascript.js?v=2"></script>
 </body>
 </html>
