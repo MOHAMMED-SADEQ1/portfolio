@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Synced Cloud Calendar - Smart calendar with real-time sync across devices, shared calendars, and team tools. Detailed project page: screenshots, features, and tech stack. | تطبيق تقويم ذكي صفحة تفاصيل المشروع">
+    <title>Synced Cloud Calendar | تطبيق تقويم ذكي</title>
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Styles + Project Page Styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="project.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Cairo', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4',
+                            400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e',
+                            800: '#115e59', 900: '#134e4a',
+                        },
+                        neon: {
+                            cyan: '#64ffda', blue: '#00d4ff', purple: '#a855f7',
+                            green: '#22d3ee', pink: '#f472b6',
+                        },
+                        dark: { base: '#0a192f', light: '#112240', lighter: '#1d3461' }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-slow': 'float 8s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased lang-transition">
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- ==================== HEADER / NAVIGATION ==================== -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html#hero" class="text-2xl font-bold font-mono">
+                    <span class="text-neon-cyan">&lt;</span>
+                    <span class="gradient-text">MS</span>
+                    <span class="text-neon-cyan">/&gt;</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <ul class="hidden md:flex items-center gap-8">
+                    <li><a href="index.html#hero" class="nav-link text-sm font-medium hover:text-neon-cyan transition-colors" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                    <li><a href="index.html#projects" class="nav-link text-sm font-medium hover:text-neon-cyan transition-colors" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+                    <li><a href="index.html#contact" class="nav-link text-sm font-medium hover:text-neon-cyan transition-colors" data-en="Contact" data-ar="تواصل">Contact</a></li>
+                </ul>
+
+                <!-- Desktop Actions -->
+                <div class="hidden md:flex items-center gap-4">
+                    <button id="lang-toggle" class="lang-toggle glass px-4 py-2 rounded-full text-sm font-medium hover:border-neon-cyan transition-all" aria-label="Toggle Language">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-globe"></i>
+                            <span id="lang-label">العربية</span>
+                        </span>
+                    </button>
+                    <a href="index.html#contact" class="btn-primary px-6 py-2.5 rounded-full font-medium text-sm">
+                        <span data-en="Let's Talk" data-ar="لنتحدث">Let's Talk</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <div class="md:hidden flex items-center gap-3 ms-4">
+                    <button id="menu-toggle" class="text-2xl focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-72 glass-strong z-50 p-8">
+            <button id="menu-close" class="absolute top-6 right-6 text-2xl focus:outline-none" aria-label="Close Menu">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="mt-16 mb-8">
+                <button id="mobile-lang-toggle" class="lang-toggle glass px-4 py-2 rounded-full text-sm font-medium hover:border-neon-cyan transition-all" aria-label="Toggle Language">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-globe"></i>
+                        <span class="mobile-lang-label">العربية</span>
+                    </span>
+                </button>
+            </div>
+
+            <ul class="flex flex-col gap-8">
+                <li><a href="index.html#hero" class="mobile-link text-lg font-medium hover:text-neon-cyan transition-colors" data-en="Home" data-ar="الرئيسية">Home</a></li>
+                <li><a href="index.html#projects" class="mobile-link text-lg font-medium hover:text-neon-cyan transition-colors" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+                <li><a href="index.html#contact" class="mobile-link text-lg font-medium hover:text-neon-cyan transition-colors" data-en="Contact" data-ar="تواصل">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+<!-- HERO -->
+<section class="pt-32 md:pt-40 pb-20 relative overflow-hidden">
+    <div class="gradient-orb w-96 h-96 bg-neon-purple top-10 -left-20 animate-float"></div>
+<div class="gradient-orb w-[420px] h-[420px] bg-neon-blue bottom-10 -right-24 animate-float-slow" style="animation-delay: 2s;"></div>
+    <div class="container mx-auto px-6 relative z-10">
+        <a href="index.html#projects" class="inline-flex items-center gap-2 text-gray-400 hover:text-neon-cyan transition-colors text-sm mb-8">
+            <i class="fas fa-arrow-left"></i>
+            <span data-en="Back to Portfolio" data-ar="العودة إلى الأعمال">Back to Portfolio</span>
+        </a>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div data-aos="fade-up">
+                <div class="flex flex-wrap gap-2 mb-6"><span class="px-4 py-1.5 rounded-full text-xs font-medium border-neon-purple/30 text-neon-purple glass">Flutter</span>
+<span class="px-4 py-1.5 rounded-full text-xs font-medium border-neon-purple/30 text-neon-purple glass">Next.js</span>
+<span class="px-4 py-1.5 rounded-full text-xs font-medium border-neon-purple/30 text-neon-purple glass">Firebase</span>
+<span class="px-4 py-1.5 rounded-full text-xs font-medium border-neon-purple/30 text-neon-purple glass">Firestore</span></div>
+                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                    <span class="gradient-text" data-en="Synced Cloud Calendar" data-ar="تطبيق تقويم ذكي">Synced Cloud Calendar</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl leading-relaxed mb-8" data-en="Smart calendar with real-time sync across devices, shared calendars, and team tools." data-ar="تقويم ذكي بمزامنة فورية عبر الأجهزة وتقاويم مشتركة وأدوات فريق.">Smart calendar with real-time sync across devices, shared calendars, and team tools.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10"><div class="flex items-center gap-3 glass px-5 py-3 rounded-xl"><i class="fas fa-calendar-alt text-neon-purple text-lg"></i><div class="text-start"><p class="text-xs text-gray-500" data-en="Category" data-ar="التصنيف">Category</p><p class="text-sm font-medium" data-en="Smart Calendar" data-ar="تقويم ذكي">Smart Calendar</p></div></div>
+<div class="flex items-center gap-3 glass px-5 py-3 rounded-xl"><i class="fas fa-circle-check text-neon-purple text-lg"></i><div class="text-start"><p class="text-xs text-gray-500" data-en="Status" data-ar="الحالة">Status</p><p class="text-sm font-medium" data-en="Production Ready" data-ar="جاهز للإنتاج">Production Ready</p></div></div>
+<div class="flex items-center gap-3 glass px-5 py-3 rounded-xl"><i class="fas fa-calendar text-neon-purple text-lg"></i><div class="text-start"><p class="text-xs text-gray-500" data-en="Year" data-ar="السنة">Year</p><p class="text-sm font-medium" data-en="2023" data-ar="2023">2023</p></div></div></div>
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="https://github.com/MOHAMMED-SADEQ1" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold magnetic-btn">
+                        <i class="fab fa-github"></i>
+                        <span data-en="View Code" data-ar="عرض الكود">View Code</span>
+                    </a>
+                    <a href="index.html#contact" class="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold magnetic-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-en="Discuss a Project" data-ar="ناقش مشروعاً">Discuss a Project</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-frame" data-aos="fade-left">
+                <div class="hero-frame-bar">
+                    <span class="hero-dot bg-[#ff5f57]"></span>
+                    <span class="hero-dot bg-[#febc2e]"></span>
+                    <span class="hero-dot bg-[#28c840]"></span>
+                    <span class="hero-url">cloud-calendar.example.com</span>
+                </div>
+                <div class="hero-frame-body">
+                    <img src="assets/projects/cloud-calendar/cover.png" alt="Synced Cloud Calendar" class="w-full h-full object-cover"
+                         loading="lazy"
+                         onerror="this.style.display='none';this.parentElement.classList.add('no-image');">
+                    <div class="img-placeholder">
+                        <i class="fas fa-image text-4xl"></i>
+                        <span data-en="Cover image goes here" data-ar="صورة الغلاف توضع هنا">Cover image goes here</span>
+                        <code class="img-path">assets/projects/cloud-calendar/cover.png</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <div class="section-divider mx-auto max-w-4xl"></div>
+<!-- GALLERY -->
+<section id="gallery" class="py-20 relative">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <p class="text-neon-cyan font-mono text-sm mb-2" data-aos="fade-down" data-en="Project Gallery" data-ar="معرض المشروع">Project Gallery</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4" data-aos="fade-up">
+                <span class="gradient-text" data-en="System Screens" data-ar="شاشات النظام">System Screens</span>
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100"
+               data-en="Screenshots of the system, the control and admin panels, and the mobile app."
+               data-ar="لقطات شاشة للنظام ولوحات التحكم والإدارة وتطبيق الموبايل.">
+               Screenshots of the system, the control and admin panels, and the mobile app.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <figure class="gallery-card glass" data-aos="fade-up" data-aos-delay="100">
+    <div class="gallery-media">
+        <img src="assets/projects/cloud-calendar/gallery-1.png" alt="Web Calendar" class="gallery-img" loading="lazy"
+             onerror="this.style.display='none';this.parentElement.classList.add('no-image');">
+        <div class="img-placeholder">
+            <i class="fas fa-camera"></i>
+            <span data-en="Screenshot coming" data-ar="الصورة قادمة">Screenshot coming</span>
+            <code class="img-path">assets/projects/cloud-calendar/gallery-1.png</code>
+        </div>
+        <div class="gallery-zoom"><i class="fas fa-magnifying-glass-plus"></i></div>
+    </div>
+    <figcaption class="gallery-caption" data-en="Web Calendar" data-ar="تقويم الويب">Web Calendar</figcaption>
+</figure>
+<figure class="gallery-card glass" data-aos="fade-up" data-aos-delay="200">
+    <div class="gallery-media">
+        <img src="assets/projects/cloud-calendar/gallery-2.png" alt="Mobile App" class="gallery-img" loading="lazy"
+             onerror="this.style.display='none';this.parentElement.classList.add('no-image');">
+        <div class="img-placeholder">
+            <i class="fas fa-camera"></i>
+            <span data-en="Screenshot coming" data-ar="الصورة قادمة">Screenshot coming</span>
+            <code class="img-path">assets/projects/cloud-calendar/gallery-2.png</code>
+        </div>
+        <div class="gallery-zoom"><i class="fas fa-magnifying-glass-plus"></i></div>
+    </div>
+    <figcaption class="gallery-caption" data-en="Mobile App" data-ar="تطبيق الموبايل">Mobile App</figcaption>
+</figure>
+<figure class="gallery-card glass" data-aos="fade-up" data-aos-delay="300">
+    <div class="gallery-media">
+        <img src="assets/projects/cloud-calendar/gallery-3.png" alt="Sharing & Collaboration" class="gallery-img" loading="lazy"
+             onerror="this.style.display='none';this.parentElement.classList.add('no-image');">
+        <div class="img-placeholder">
+            <i class="fas fa-camera"></i>
+            <span data-en="Screenshot coming" data-ar="الصورة قادمة">Screenshot coming</span>
+            <code class="img-path">assets/projects/cloud-calendar/gallery-3.png</code>
+        </div>
+        <div class="gallery-zoom"><i class="fas fa-magnifying-glass-plus"></i></div>
+    </div>
+    <figcaption class="gallery-caption" data-en="Sharing & Collaboration" data-ar="المشاركة والتعاون">Sharing & Collaboration</figcaption>
+</figure>
+        </div>
+    </div>
+</section>
+    <div class="section-divider mx-auto max-w-4xl"></div>
+<!-- OVERVIEW -->
+<section id="overview" class="py-20 relative">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
+            <div class="lg:col-span-2 article-prose" data-aos="fade-up">
+                <p class="text-neon-cyan font-mono text-sm mb-2" data-en="Overview" data-ar="نظرة عامة">Overview</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                    <span class="gradient-text" data-en="About This Project" data-ar="عن هذا المشروع">About This Project</span>
+                </h2>
+                <p class="mb-6 text-lg leading-relaxed text-gray-300" data-en="Synced Cloud Calendar is a smart calendar experience that spans Android, the web, and the cloud. Every event, reminder, and shared calendar stays in perfect sync across all of your devices, powered by Firebase real-time synchronization." data-ar="التقويم السحابي هو تجربة تقويم ذكية تمتد عبر أندرويد والويب والسحابة. يبقى كل حدث وتذكير وتقويم مشترك متزامناً تماماً عبر جميع أجهزتك، مدعوماً بمزامنة Firebase الفورية.">Synced Cloud Calendar is a smart calendar experience that spans Android, the web, and the cloud. Every event, reminder, and shared calendar stays in perfect sync across all of your devices, powered by Firebase real-time synchronization.</p>
+<p class="mb-6 text-lg leading-relaxed text-gray-300" data-en="Beyond a simple agenda, the platform focuses on teamwork: shared calendars with granular permissions, event comments, and availability coordination. A Flutter mobile app delivers the same experience on the go, with offline support and instant catch-up once you are back online." data-ar="أبعد من مجرد جدول بسيط، تركز المنصة على العمل الجماعي: تقاويم مشتركة بصلاحيات دقيقة، تعليقات على الأحداث، وتنسيق المواعيد. يقدم تطبيق Flutter نفس التجربة أثناء التنقل، مع دعم بدون إنترنت ومزامنة فورية فور عودة الاتصال.">Beyond a simple agenda, the platform focuses on teamwork: shared calendars with granular permissions, event comments, and availability coordination. A Flutter mobile app delivers the same experience on the go, with offline support and instant catch-up once you are back online.</p>
+            </div>
+            <aside class="glass rounded-2xl p-8" data-aos="fade-left">
+                <h3 class="text-xl font-bold mb-6" data-en="Highlights" data-ar="أبرز النقاط">Highlights</h3>
+                <ul class="space-y-5 text-gray-300"><li class="flex items-center gap-3"><i class="fas fa-sync text-neon-purple w-5 text-center"></i><span data-en="Live sync" data-ar="مزامنة حية">Live sync</span></li>
+<li class="flex items-center gap-3"><i class="fas fa-share-alt text-neon-purple w-5 text-center"></i><span data-en="Shared calendars" data-ar="تقاويم مشتركة">Shared calendars</span></li>
+<li class="flex items-center gap-3"><i class="fas fa-mobile-screen text-neon-purple w-5 text-center"></i><span data-en="Web + mobile" data-ar="ويب وموبايل">Web + mobile</span></li>
+<li class="flex items-center gap-3"><i class="fas fa-lock text-neon-purple w-5 text-center"></i><span data-en="Private & secure" data-ar="خاص وآمن">Private & secure</span></li></ul>
+                <div class="mt-8 pt-8 border-t border-white/10">
+                    <h4 class="text-sm text-gray-500 mb-4" data-en="Tech Stack" data-ar="التقنيات">Tech Stack</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="stack-chip text-neon-purple">Flutter</span><span class="stack-chip text-neon-purple">Next.js</span><span class="stack-chip text-neon-purple">Firebase</span><span class="stack-chip text-neon-purple">Firestore</span><span class="stack-chip text-neon-purple">Push Notifications</span><span class="stack-chip text-neon-purple">OAuth</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+    <div class="section-divider mx-auto max-w-4xl"></div>
+<!-- FEATURES -->
+<section id="features" class="py-20 relative">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <p class="text-neon-cyan font-mono text-sm mb-2" data-aos="fade-down" data-en="Capabilities" data-ar="الإمكانيات">Capabilities</p>
+            <h2 class="text-3xl md:text-4xl font-bold" data-aos="fade-up">
+                <span class="gradient-text" data-en="Key Features" data-ar="أبرز المزايا">Key Features</span>
+            </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="feature-card glass rounded-2xl p-8" data-aos="fade-up" data-aos-delay="0">
+    <div class="feature-icon text-neon-purple mb-5"><i class="fas fa-sync"></i></div>
+    <h3 class="text-xl font-bold mb-3" data-en="Real-time Sync" data-ar="مزامنة فورية">Real-time Sync</h3>
+    <p class="text-gray-400 text-sm leading-relaxed" data-en="Events appear on every device the moment they change." data-ar="تظهر الأحداث على كل جهاز لحظة تغيّرها.">Events appear on every device the moment they change.</p>
+</div>
+<div class="feature-card glass rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+    <div class="feature-icon text-neon-purple mb-5"><i class="fas fa-share-alt"></i></div>
+    <h3 class="text-xl font-bold mb-3" data-en="Shared Calendars" data-ar="تقاويم مشتركة">Shared Calendars</h3>
+    <p class="text-gray-400 text-sm leading-relaxed" data-en="Share calendars with full control over read or write access." data-ar="شارك التقاويم مع تحكم كامل بصلاحيات القراءة أو الكتابة.">Share calendars with full control over read or write access.</p>
+</div>
+<div class="feature-card glass rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+    <div class="feature-icon text-neon-purple mb-5"><i class="fas fa-bell"></i></div>
+    <h3 class="text-xl font-bold mb-3" data-en="Smart Reminders" data-ar="تذكيرات ذكية">Smart Reminders</h3>
+    <p class="text-gray-400 text-sm leading-relaxed" data-en="Reminders delivered on mobile and web before every event." data-ar="تذكيرات تصل على الموبايل والويب قبل كل حدث.">Reminders delivered on mobile and web before every event.</p>
+</div>
+<div class="feature-card glass rounded-2xl p-8" data-aos="fade-up" data-aos-delay="0">
+    <div class="feature-icon text-neon-purple mb-5"><i class="fas fa-users"></i></div>
+    <h3 class="text-xl font-bold mb-3" data-en="Team Collaboration" data-ar="تعاون الفريق">Team Collaboration</h3>
+    <p class="text-gray-400 text-sm leading-relaxed" data-en="Comment on events and coordinate availability with teammates." data-ar="علّق على الأحداث وتناسق مع فريقك حول المواعيد.">Comment on events and coordinate availability with teammates.</p>
+</div>
+<div class="feature-card glass rounded-2xl p-8" data-aos="fade-up" data-aos-delay="100">
+    <div class="feature-icon text-neon-purple mb-5"><i class="fas fa-mobile-screen"></i></div>
+    <h3 class="text-xl font-bold mb-3" data-en="Web & Mobile" data-ar="ويب وموبايل">Web & Mobile</h3>
+    <p class="text-gray-400 text-sm leading-relaxed" data-en="One experience across Android, iOS, and the browser." data-ar="تجربة واحدة عبر أندرويد وiOS والمتصفح.">One experience across Android, iOS, and the browser.</p>
+</div>
+<div class="feature-card glass rounded-2xl p-8" data-aos="fade-up" data-aos-delay="200">
+    <div class="feature-icon text-neon-purple mb-5"><i class="fas fa-lock"></i></div>
+    <h3 class="text-xl font-bold mb-3" data-en="Secure by Design" data-ar="آمن بالتصميم">Secure by Design</h3>
+    <p class="text-gray-400 text-sm leading-relaxed" data-en="End-to-end encrypted sync keeps your schedule private." data-ar="مزامنة مشفرة بالكامل تحفظ خصوصية جدولك.">End-to-end encrypted sync keeps your schedule private.</p>
+</div>
+        </div>
+    </div>
+</section>
+    <div class="section-divider mx-auto max-w-4xl"></div>
+<!-- RELATED -->
+<section id="related" class="py-20 relative">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <p class="text-neon-cyan font-mono text-sm mb-2" data-aos="fade-down" data-en="Keep Exploring" data-ar="واصل الاستكشاف">Keep Exploring</p>
+            <h2 class="text-3xl md:text-4xl font-bold" data-aos="fade-up">
+                <span class="gradient-text" data-en="More Projects" data-ar="مشاريع أخرى">More Projects</span>
+            </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="project-laundry-pos.html" class="related-card glass rounded-2xl p-6 group">
+    <div class="flex items-center justify-between mb-4">
+        <i class="fas fa-folder-open text-2xl text-neon-cyan group-hover:scale-110 transition-transform"></i>
+        <i class="fas fa-arrow-right text-neon-cyan text-sm"></i>
+    </div>
+    <h3 class="text-lg font-bold group-hover:text-neon-cyan transition-colors" data-en="Laundry POS System" data-ar="نظام مبيعات المغاسل">Laundry POS System</h3>
+</a>
+<a href="project-student-services.html" class="related-card glass rounded-2xl p-6 group">
+    <div class="flex items-center justify-between mb-4">
+        <i class="fas fa-folder-open text-2xl text-neon-cyan group-hover:scale-110 transition-transform"></i>
+        <i class="fas fa-arrow-right text-neon-cyan text-sm"></i>
+    </div>
+    <h3 class="text-lg font-bold group-hover:text-neon-cyan transition-colors" data-en="University Student Service System" data-ar="نظام خدمة الطالب الجامعي">University Student Service System</h3>
+</a>
+<a href="project-ecommerce.html" class="related-card glass rounded-2xl p-6 group">
+    <div class="flex items-center justify-between mb-4">
+        <i class="fas fa-folder-open text-2xl text-neon-cyan group-hover:scale-110 transition-transform"></i>
+        <i class="fas fa-arrow-right text-neon-cyan text-sm"></i>
+    </div>
+    <h3 class="text-lg font-bold group-hover:text-neon-cyan transition-colors" data-en="Full-Stack E-Commerce" data-ar="متجر إلكتروني متكامل">Full-Stack E-Commerce</h3>
+</a>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-16"><a href="project-laundry-pos.html" class="inline-flex items-center gap-3 glass rounded-2xl px-6 py-4 hover:border-neon-cyan transition-all"><i class="fas fa-arrow-left text-neon-cyan"></i><span class="text-start"><span class="block text-xs text-gray-500" data-en="Previous Project" data-ar="المشروع السابق">Previous Project</span><span class="block font-semibold text-sm" data-en="Laundry POS System" data-ar="نظام مبيعات المغاسل">Laundry POS System</span></span></a><a href="project-student-services.html" class="inline-flex items-center gap-3 glass rounded-2xl px-6 py-4 hover:border-neon-cyan transition-all"><span class="text-end"><span class="block text-xs text-gray-500" data-en="Next Project" data-ar="المشروع التالي">Next Project</span><span class="block font-semibold text-sm" data-en="University Student Service System" data-ar="نظام خدمة الطالب الجامعي">University Student Service System</span></span><i class="fas fa-arrow-right text-neon-cyan"></i></a></div>
+        <div class="text-center mt-16">
+            <a href="index.html#projects" class="btn-outline inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold magnetic-btn">
+                <i class="fas fa-th-large"></i>
+                <span data-en="All Projects" data-ar="كل المشاريع">All Projects</span>
+            </a>
+        </div>
+    </div>
+</section>
+    <div class="section-divider mx-auto max-w-4xl"></div>
+<!-- CTA -->
+<section class="py-20 relative">
+    <div class="container mx-auto px-6">
+        <div class="glass rounded-3xl p-10 md:p-16 text-center neon-glow" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="gradient-text" data-en="Have a similar project in mind?" data-ar="لديك مشروع مشابه في ذهنك؟">Have a similar project in mind?</span>
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-8" data-en="I build complex systems with precision and scale. Let's talk about your idea."
+               data-ar="أبني أنظمة معقدة بدقة وقابلية للتوسع. لنتحدث عن فكرتك.">I build complex systems with precision and scale. Let's talk about your idea.</p>
+            <a href="index.html#contact" class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-semibold magnetic-btn">
+                <i class="fas fa-paper-plane"></i>
+                <span data-en="Get In Touch" data-ar="تواصل معي">Get In Touch</span>
+            </a>
+        </div>
+    </div>
+</section>
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <a href="index.html#hero" class="text-2xl font-bold font-mono">
+                    <span class="text-neon-cyan">&lt;</span>
+                    <span class="gradient-text">MS</span>
+                    <span class="text-neon-cyan">/&gt;</span>
+                </a>
+                <p class="text-gray-500 text-sm text-center">
+                    &copy; <span id="current-year"></span> <span data-en="MOHAMMED SADEQ ABDO AHMED. All rights reserved." data-ar="محمد صادق. جميع الحقوق محفوظة.">MOHAMMED SADEQ ABDO AHMED. All rights reserved.</span>
+                </p>
+                <a href="#top" class="social-icon w-10 h-10 rounded-full glass flex items-center justify-center text-gray-400 hover:text-neon-cyan">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox fixed inset-0 z-[10000]" role="dialog" aria-modal="true" aria-label="Project screenshot viewer">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-sm" id="lightbox-backdrop"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-6">
+            <button id="lightbox-close" class="absolute top-6 end-6 text-white text-3xl hover:text-neon-cyan transition-colors" aria-label="Close Image">
+                <i class="fas fa-times"></i>
+            </button>
+            <figure class="relative max-w-5xl w-full">
+                <img id="lightbox-img" src="" alt="Project screenshot" class="w-full max-h-[80vh] object-contain rounded-lg border border-white/10">
+                <figcaption id="lightbox-caption" class="text-center text-gray-300 text-sm mt-4"></figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- Project Page JavaScript -->
+    <script src="project.js"></script>
+</body>
+</html>

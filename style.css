@@ -33,6 +33,11 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Keep section tops visible below the fixed header when arriving via URL hash */
+section[id] {
+    scroll-margin-top: 90px;
+}
+
 body {
     background: var(--bg-base);
     min-height: 100vh;
