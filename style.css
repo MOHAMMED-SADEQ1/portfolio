@@ -52,7 +52,9 @@ body {
     font-family: 'Cairo', 'JetBrains Mono', monospace;
 }
 
-[dir="rtl"] {
+/* Prevent horizontal overflow in ALL languages (RTL & LTR) -
+   stops the sideways drag space that appears in English mode */
+html {
     overflow-x: hidden;
 }
 
@@ -378,22 +380,29 @@ body {
 /* ============================================================
    MOBILE MENU
    ============================================================ */
-.mobile-menu {
+#mobile-menu {
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    transition:
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s linear 0.4s;
 }
 
-.mobile-menu.open {
+#mobile-menu.open {
     transform: translateX(0);
+    visibility: visible;
+    transition:
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s;
 }
 
-[dir="rtl"] .mobile-menu {
+[dir="rtl"] #mobile-menu {
     right: auto;
     left: 0;
     transform: translateX(-100%);
 }
 
-[dir="rtl"] .mobile-menu.open {
+[dir="rtl"] #mobile-menu.open {
     transform: translateX(0);
 }
 
@@ -687,6 +696,7 @@ body {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
     }
     
     .gradient-orb {
