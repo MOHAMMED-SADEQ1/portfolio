@@ -52,12 +52,29 @@
 .hero-frame-body {
     position: relative;
     aspect-ratio: 16 / 10;
-    background: linear-gradient(135deg, rgba(100, 255, 218, 0.05), rgba(168, 85, 247, 0.05));
+    background:
+        radial-gradient(120% 120% at 15% 0%, rgba(100, 255, 218, 0.09), transparent 55%),
+        radial-gradient(120% 120% at 85% 100%, rgba(168, 85, 247, 0.09), transparent 55%),
+        linear-gradient(135deg, rgba(100, 255, 218, 0.05), rgba(168, 85, 247, 0.05));
     overflow: hidden;
 }
 
+.hero-frame-body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(100, 255, 218, 0.04), transparent 30%, transparent 70%, rgba(168, 85, 247, 0.06));
+}
+
+/* Hide the overlay when the image is missing so the placeholder stays clean */
+.hero-frame-body.no-image::after {
+    display: none;
+}
+
 .hero-frame-body img {
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
+    filter: saturate(1.05) contrast(1.02);
 }
 
 .hero-frame:hover .hero-frame-body img {
@@ -131,19 +148,56 @@
     position: relative;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: rgba(17, 34, 64, 0.5);
+    background:
+        radial-gradient(120% 120% at 20% 0%, rgba(100, 255, 218, 0.08), transparent 55%),
+        radial-gradient(120% 120% at 80% 100%, rgba(168, 85, 247, 0.08), transparent 55%),
+        rgba(10, 25, 47, 0.6);
     cursor: zoom-in;
+}
+
+.gallery-media::before {
+    /* subtle top glow strip for depth */
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 2;
 }
 
 .gallery-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
+    filter: saturate(1.05) contrast(1.02);
+}
+
+/* Portrait screenshots (mobile app) get a phone-mockup presentation:
+   contained, rounded device frame, glow behind - never cropped */
+.gallery-media.is-portrait {
+    background:
+        radial-gradient(90% 70% at 50% 45%, rgba(100, 255, 218, 0.12), transparent 65%),
+        radial-gradient(120% 120% at 50% 100%, rgba(168, 85, 247, 0.1), transparent 60%),
+        rgba(10, 25, 47, 0.65);
+}
+
+.gallery-media.is-portrait img {
+    object-fit: contain;
+    padding: clamp(18px, 6%, 34px) 0;
+    border-radius: 14px;
+    filter: saturate(1.06) contrast(1.03) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.45));
 }
 
 .gallery-card:hover .gallery-media img {
     transform: scale(1.06);
+}
+
+.gallery-card:hover .gallery-media::before {
+    opacity: 1;
 }
 
 .gallery-zoom {

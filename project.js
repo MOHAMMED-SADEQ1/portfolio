@@ -143,6 +143,36 @@
   document.querySelectorAll(".gallery-img").forEach((img) => {
     img.addEventListener("click", () => openLightbox(img));
   });
+
+  /* ==========================================================
+     4b. SMART IMAGE PRESENTATION
+     Detect portrait screenshots (mobile apps) and present them
+     as a phone mockup instead of cropping them with object-cover.
+     ========================================================== */
+  function setupPortraitImages() {
+    document.querySelectorAll(".gallery-media img").forEach((img) => {
+      const media = img.closest(".gallery-media");
+      if (!media) return;
+
+      const apply = () => {
+        const w = img.naturalWidth;
+        const h = img.naturalHeight;
+        if (!w || !h) return;
+        if (h > w) {
+          media.classList.add("is-portrait");
+        } else {
+          media.classList.remove("is-portrait");
+        }
+      };
+
+      if (img.complete && img.naturalWidth) {
+        apply();
+      } else {
+        img.addEventListener("load", apply);
+      }
+    });
+  }
+  setupPortraitImages();
   if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
   if (lightboxBackdrop) lightboxBackdrop.addEventListener("click", closeLightbox);
 
